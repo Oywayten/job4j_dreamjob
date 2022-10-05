@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by Oywayten on 05.10.2022.
- * Класс - хранилище, синглтон.
+ * Класс - хранилище вакансий, синглтон.
  */
 public class PostStore {
 

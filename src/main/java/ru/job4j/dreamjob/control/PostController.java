@@ -7,7 +7,7 @@ import ru.job4j.dreamjob.store.PostStore;
 
 /**
  * Created by Oywayten on 05.10.2022.
- * Класс-контроллер.
+ * Класс-контроллер для вакансий.
  */
 @Controller
 public class PostController {
