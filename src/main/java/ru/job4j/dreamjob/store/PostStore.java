@@ -31,6 +31,10 @@ public class PostStore {
         return posts.values();
     }
 
+    public Post findById(int id) {
+        return posts.get(id);
+    }
+
     public void add(Post post) {
         int newId = posts.size() + 1;
         post.setId(newId);
@@ -38,4 +42,8 @@ public class PostStore {
         posts.put(newId, post);
     }
 
+    public void update(Post post) {
+        post.setCreated(LocalDate.now().toString());
+        posts.replace(post.getId(), post);
+    }
 }
