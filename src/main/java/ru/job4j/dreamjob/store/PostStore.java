@@ -2,6 +2,7 @@ package ru.job4j.dreamjob.store;
 
 import ru.job4j.dreamjob.model.Post;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -29,4 +30,12 @@ public class PostStore {
     public Collection<Post> findAll() {
         return posts.values();
     }
+
+    public void add(Post post) {
+        int newId = posts.size() + 1;
+        post.setId(newId);
+        post.setCreated(LocalDate.now().toString());
+        posts.put(newId, post);
+    }
+
 }
