@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ru.job4j.dreamjob.model.Post;
 import ru.job4j.dreamjob.store.PostStore;
 
+import java.time.LocalDateTime;
+
 /**
  * Created by Oywayten on 05.10.2022.
  * Класс-контроллер для вакансий.
@@ -26,7 +28,7 @@ public class PostController {
 
     @GetMapping("/formAddPost")
     public String addPost(Model model) {
-        model.addAttribute("post", new Post(0, "Заполните поле", "Заполните поле", "Заполните поле"));
+        model.addAttribute("post", new Post(0, "Заполните поле", "Заполните поле", LocalDateTime.now()));
         return "addPost";
     }
 

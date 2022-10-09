@@ -2,7 +2,10 @@ package ru.job4j.dreamjob.store;
 
 import ru.job4j.dreamjob.model.Post;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,9 +23,16 @@ public class PostStore {
     private final AtomicInteger id = new AtomicInteger(1);
 
     private PostStore() {
-        posts.put(id.getAndIncrement(), new Post(1, "Junior Java Job", "This is Junior Java Job", "2022-01-01"));
-        posts.put(id.getAndIncrement(), new Post(2, "Middle Java Job", "This is Middle Java Job", "2022-01-02"));
-        posts.put(id.getAndIncrement(), new Post(3, "Senior Java Job", "This is Senior Java Job", "2022-01-03"));
+        DateTimeFormatter fmt = new DateTimeFormatterBuilder().appendPattern("yyyy-MM-dd")
+                .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
+                .parseDefaulting(ChronoField.MINUTE_OF_DAY, 0)
+                .toFormatter();
+        posts.put(id.getAndIncrement(), new Post(1, "Junior Java Job", "This is Junior Java Job",
+                LocalDateTime.parse("2022-01-01", fmt)));
+        posts.put(id.getAndIncrement(), new Post(2, "Middle Java Job", "This is Middle Java Job",
+                LocalDateTime.parse("2022-01-02", fmt)));
+        posts.put(id.getAndIncrement(), new Post(3, "Senior Java Job", "This is Senior Java Job",
+                LocalDateTime.parse("2022-01-03", fmt)));
     }
 
     public static PostStore instOf() {
@@ -39,12 +49,12 @@ public class PostStore {
 
     public void add(Post post) {
         post.setId(id.getAndIncrement());
-        post.setCreated(LocalDate.now().toString());
+        post.setCreated(LocalDateTime.now());
         posts.put(post.getId(), post);
     }
 
     public void update(Post post) {
-        post.setCreated(LocalDate.now().toString());
+        post.setCreated(LocalDateTime.now());
         posts.replace(post.getId(), post);
     }
 }

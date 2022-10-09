@@ -59,7 +59,7 @@
                     <span th:text="${post.name}"></span>
                 </td>
                 <td th:text="${post.description}"/>
-                <td th:text="${post.created}"/>
+                <td th:text="${#temporals.format(post.created, 'yyyy-MM-dd')}"/>
             </tr>
             </tbody>
         </table>
