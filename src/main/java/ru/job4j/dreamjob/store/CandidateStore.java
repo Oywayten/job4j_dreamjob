@@ -1,7 +1,8 @@
 package ru.job4j.dreamjob.store;
 
-import ru.job4j.dreamjob.model.Post;
+import ru.job4j.dreamjob.model.Candidate;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,19 +15,19 @@ public class CandidateStore {
 
     private static final CandidateStore INST = new CandidateStore();
 
-    private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
+    private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
 
     private CandidateStore() {
-        posts.put(1, new Post(1, "Ivan", "This is Junior", "1993-01-01"));
-        posts.put(2, new Post(2, "Sergey", "This is Middle", "1989-01-02"));
-        posts.put(3, new Post(3, "Bob", "This is Senior", "1983-01-03"));
+        candidates.put(1, new Candidate(1, "Ivan", "This is Junior", LocalDate.parse("1993-01-01")));
+        candidates.put(2, new Candidate(2, "Sergey", "This is Middle", LocalDate.parse("1989-01-02")));
+        candidates.put(3, new Candidate(3, "Bob", "This is Senior", LocalDate.parse("1983-01-03")));
     }
 
     public static CandidateStore instOf() {
         return INST;
     }
 
-    public Collection<Post> findAll() {
-        return posts.values();
+    public Collection<Candidate> findAll() {
+        return candidates.values();
     }
 }

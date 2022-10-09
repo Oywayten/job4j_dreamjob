@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import ru.job4j.dreamjob.model.Candidate;
 import ru.job4j.dreamjob.store.CandidateStore;
 
+import java.time.LocalDate;
+
 /**
  * Created by Oywayten on 05.10.2022.
  * Класс-контроллер для кандидатов.
@@ -23,7 +25,7 @@ public class CandidateController {
 
     @GetMapping("/formAddCandidate")
     public String addCandidate(Model model) {
-        model.addAttribute("candidate", new Candidate(0, "Заполните поле", "Заполните поле", "Заполните поле"));
+        model.addAttribute("candidate", new Candidate(0, "Заполните поле", "Заполните поле", LocalDate.now()));
         return "addCandidate";
     }
 }
