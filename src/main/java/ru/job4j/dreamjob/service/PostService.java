@@ -11,15 +11,12 @@ import java.util.Collection;
  */
 @Service
 public class PostService {
-    private static final PostService INST = new PostService();
-    private final PostStore store = PostStore.instOf();
+    private final PostStore store;
 
-    private PostService() {
+    public PostService(PostStore store) {
+        this.store = store;
     }
 
-    public static PostService instOf() {
-        return INST;
-    }
 
     public Collection<Post> findAll() {
         return store.findAll();

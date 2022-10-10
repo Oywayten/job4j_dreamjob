@@ -1,5 +1,6 @@
 package ru.job4j.dreamjob.persistence;
 
+import org.springframework.stereotype.Repository;
 import ru.job4j.dreamjob.model.Candidate;
 
 import java.time.LocalDateTime;
@@ -15,9 +16,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Created by Oywayten on 05.10.2022.
  * Класс - хранилище кандидатов, синглтон.
  */
+@Repository
 public class CandidateStore {
 
-    private static final CandidateStore INST = new CandidateStore();
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
     private final AtomicInteger id = new AtomicInteger(1);
 
@@ -29,10 +30,6 @@ public class CandidateStore {
         candidates.put(id.getAndIncrement(), new Candidate(1, "Ivan", "This is Junior", LocalDateTime.parse("1993-01-01", fmt)));
         candidates.put(id.getAndIncrement(), new Candidate(2, "Sergey", "This is Middle", LocalDateTime.parse("1989-01-02", fmt)));
         candidates.put(id.getAndIncrement(), new Candidate(3, "Bob", "This is Senior", LocalDateTime.parse("1983-01-03", fmt)));
-    }
-
-    public static CandidateStore instOf() {
-        return INST;
     }
 
     public Collection<Candidate> findAll() {

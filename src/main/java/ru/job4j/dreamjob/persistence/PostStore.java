@@ -1,5 +1,6 @@
 package ru.job4j.dreamjob.persistence;
 
+import org.springframework.stereotype.Repository;
 import ru.job4j.dreamjob.model.Post;
 
 import java.time.LocalDateTime;
@@ -15,10 +16,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Created by Oywayten on 05.10.2022.
  * Класс - хранилище вакансий, синглтон.
  */
+@Repository
 public class PostStore {
-
-    private static final PostStore INST = new PostStore();
-
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
     private final AtomicInteger id = new AtomicInteger(1);
 
@@ -33,10 +32,6 @@ public class PostStore {
                 LocalDateTime.parse("2022-01-02", fmt)));
         posts.put(id.getAndIncrement(), new Post(3, "Senior Java Job", "This is Senior Java Job",
                 LocalDateTime.parse("2022-01-03", fmt)));
-    }
-
-    public static PostStore instOf() {
-        return INST;
     }
 
     public Collection<Post> findAll() {
