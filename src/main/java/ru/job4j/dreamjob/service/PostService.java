@@ -29,6 +29,8 @@ public class PostService {
     }
 
     public void add(Post post) {
+        int cityID = post.getCity().getId();
+
         store.add(post);
     }
 
