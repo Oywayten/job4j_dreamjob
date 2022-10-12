@@ -1,5 +1,6 @@
 package ru.job4j.dreamjob.persistence;
 
+import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
 import ru.job4j.dreamjob.model.Post;
 
@@ -17,6 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Класс - хранилище вакансий, синглтон.
  */
 @Repository
+@ThreadSafe
 public class PostStore {
     private final Map<Integer, Post> posts = new ConcurrentHashMap<>();
     private final AtomicInteger id = new AtomicInteger(1);

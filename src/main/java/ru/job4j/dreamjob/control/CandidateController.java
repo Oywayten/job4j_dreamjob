@@ -1,5 +1,6 @@
 package ru.job4j.dreamjob.control;
 
+import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
  * Класс-контроллер для кандидатов.
  */
 @Controller
+@ThreadSafe
 public class CandidateController {
     private final CandidateService service;
 
