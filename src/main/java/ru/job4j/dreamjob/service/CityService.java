@@ -28,8 +28,7 @@ public class CityService {
     }
 
     public void setCity(Post post) {
-        City city = post.getCity();
-        String name = findById(city.getId()).getName();
-        city.setName(name);
+        City city = findById(post.getCity().getId());
+        post.setCity(city);
     }
 }
