@@ -12,6 +12,7 @@ import ru.job4j.dreamjob.service.CityService;
 import ru.job4j.dreamjob.service.PostService;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 /**
  * Created by Oywayten on 05.10.2022.
@@ -30,7 +31,9 @@ public class PostController {
 
     @GetMapping("/posts")
     public String posts(Model model) {
-        model.addAttribute("posts", postService.findAll());
+        Collection<Post> postCollection = postService.findAll();
+        postCollection.forEach(cityService::setCity);
+        model.addAttribute("posts", postCollection);
         return "posts";
     }
 
