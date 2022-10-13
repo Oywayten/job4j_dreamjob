@@ -6,3 +6,11 @@ create table post (
    visible bool,
    city_id int
 );
+
+create table candidate (
+   id serial primary key,
+   fname text,
+   description text,
+   created timestamp,
+   file bytea
+);

@@ -44,7 +44,6 @@ public class PostDBStore {
         return posts;
     }
 
-
     public Post add(Post post) {
         try (Connection cn = pool.getConnection();
              PreparedStatement ps = cn.prepareStatement(
