@@ -14,3 +14,13 @@ create table candidate (
    created timestamp,
    file bytea
 );
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  fname varchar (255),
+  email TEXT unique,
+  password TEXT
+);
+
+
+select * from users;
