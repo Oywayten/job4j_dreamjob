@@ -21,6 +21,3 @@ CREATE TABLE users (
   email TEXT unique,
   password TEXT
 );
-
-
-select * from users;
