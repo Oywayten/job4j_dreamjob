@@ -15,9 +15,9 @@ create table candidate (
    file bytea
 );
 
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
+create table users (
+  id serial primary key,
   fname varchar (255),
-  email TEXT unique,
-  password TEXT
+  email text unique,
+  password text
 );

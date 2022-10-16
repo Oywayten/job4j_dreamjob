@@ -18,6 +18,7 @@ import java.util.Optional;
 @Repository
 public class UserDBStore {
     private static final String ADD = "INSERT INTO users(fname, email, password) VALUES (?, ?, ?)";
+    private static final String FIND_USER_BY_EMAIL_AND_PWD = "select * from users where email = ? and password = ?";
     private static final Logger LOG = LogManager.getLogger(UserDBStore.class);
     private final BasicDataSource pool;
 
@@ -41,6 +42,23 @@ public class UserDBStore {
                 if (id.next()) {
                     user.setId(id.getInt(1));
                     optionalUser = Optional.of(user);
+                }
+            }
+        } catch (Exception e) {
+            LOG.error(e.getMessage(), e);
+        }
+        return optionalUser;
+    }
+
+    public Optional<User> findUserByEmailAndPwd(String email, String pass) {
+        Optional<User> optionalUser = Optional.empty();
+        try (Connection cn = pool.getConnection();
+             PreparedStatement ps = cn.prepareStatement(FIND_USER_BY_EMAIL_AND_PWD)) {
+            ps.setString(1, email);
+            ps.setString(2, pass);
+            try (ResultSet it = ps.executeQuery()) {
+                if (it.next()) {
+                    optionalUser = Optional.of(getUser(it));
                 }
             }
         } catch (Exception e) {
