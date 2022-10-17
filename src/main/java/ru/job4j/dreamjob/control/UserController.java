@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @GetMapping("/addUser")
-    public String addCandidate(Model model) {
+    public String addUser(Model model) {
         model.addAttribute("user", new User(0, "Заполните поле", "Заполните поле", "Заполните поле"));
         return "addUser";
     }
