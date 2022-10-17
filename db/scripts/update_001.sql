@@ -17,7 +17,7 @@ create table candidate (
 
 create table users (
   id serial primary key,
-  fname varchar (255),
+  fname text,
   email text unique,
   password text
 );
