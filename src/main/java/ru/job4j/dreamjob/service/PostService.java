@@ -19,7 +19,6 @@ public class PostService {
         this.store = store;
     }
 
-
     public Collection<Post> findAll() {
         return store.findAll();
     }
