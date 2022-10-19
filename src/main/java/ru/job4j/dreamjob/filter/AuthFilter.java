@@ -17,7 +17,7 @@ public class AuthFilter implements Filter {
     /**
      * Список постфиксов страниц разрешенных для доступа без аутентификации.
      */
-    private final Set<String> allowedPageSet = Set.of(
+    private static final Set<String> ALLOWED_PAGE_SET = Set.of(
             "loginPage",
             "login",
             "addUser",
@@ -30,7 +30,7 @@ public class AuthFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         String uri = req.getRequestURI();
-        if (pageCheck(allowedPageSet, uri)) {
+        if (pageCheck(uri)) {
             chain.doFilter(req, res);
             return;
         }
@@ -41,7 +41,7 @@ public class AuthFilter implements Filter {
         chain.doFilter(req, res);
     }
 
-    private boolean pageCheck(Set<String> pageSet, String uri) {
-        return pageSet.stream().anyMatch(uri::endsWith);
+    private boolean pageCheck(String uri) {
+        return ALLOWED_PAGE_SET.stream().anyMatch(uri::endsWith);
     }
 }
