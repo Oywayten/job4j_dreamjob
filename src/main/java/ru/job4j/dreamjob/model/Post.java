@@ -1,6 +1,5 @@
 package ru.job4j.dreamjob.model;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -8,7 +7,7 @@ import java.util.Objects;
  * Created by Oywayten on 05.10.2022.
  * Класс - модель, описывает вакансию.
  */
-public class Post implements Serializable {
+public class Post {
     private int id;
     private String name;
     private String description;

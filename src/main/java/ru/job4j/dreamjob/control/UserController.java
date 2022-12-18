@@ -42,6 +42,9 @@ public class UserController {
         return "redirect:/posts";
     }
 
+    /*
+    /loginPage?fail=false
+     */
     @GetMapping("/loginPage")
     public String loginPage(Model model, @RequestParam(name = "fail", required = false) Boolean fail) {
         model.addAttribute("fail", fail != null);
