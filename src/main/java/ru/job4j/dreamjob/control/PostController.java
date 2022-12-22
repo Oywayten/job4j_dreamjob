@@ -18,8 +18,8 @@ import java.util.Collection;
 import static ru.job4j.dreamjob.util.Util.setUser;
 
 /**
- * Created by Oywayten on 05.10.2022.
  * Класс-контроллер для вакансий.
+ * Created by Oywayten on 05.10.2022.
  */
 @Controller
 @ThreadSafe
