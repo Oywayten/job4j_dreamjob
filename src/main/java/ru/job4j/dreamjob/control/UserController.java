@@ -61,6 +61,7 @@ public class UserController {
             return "redirect:/loginPage?fail=true";
         }
         HttpSession session = req.getSession();
+        System.out.println(session.getId());
         session.setAttribute("user", userDb.get());
         return "redirect:/index";
     }
