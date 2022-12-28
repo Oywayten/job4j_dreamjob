@@ -44,3 +44,5 @@ hs_err_pid*
 /src/main/java/benfrain/
 /src/main/java/blinov/chapt17/
 /src/main/java/sg/edu/ntu/tutorial/
+
+*.swp
