@@ -37,7 +37,7 @@ public class PostController {
         Collection<Post> postCollection = postService.findAll();
         postCollection.forEach(cityService::setCity);
         model.addAttribute("posts", postCollection);
-        //setUser(session, model);
+        setUser(session, model);
         return "posts";
     }
 
