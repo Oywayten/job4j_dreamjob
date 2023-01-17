@@ -53,7 +53,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute User user, HttpServletRequest req) {
+        public String login(@ModelAttribute User user, HttpServletRequest req) {
         Optional<User> userDb = userService.findUserByEmailAndPassword(
                 user.getEmail(), user.getPassword()
         );

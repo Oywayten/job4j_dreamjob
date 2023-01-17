@@ -19,9 +19,19 @@ import java.util.List;
 public class PostDBStore {
     private static final String FIND_ALL = "SELECT * FROM post";
     private static final String ADD =
-            "INSERT INTO post(fname, description, created, visible, city_id) VALUES (?, ?, ?, ?,?)";
+            """
+                    INSERT INTO post(fname, description,
+                    created, visible, city_id) VALUES (?, ?, ?, ?,?)
+                    """;
     private static final String UPDATE =
-            "UPDATE post SET fname = ?, description = ?, created = ?, visible = ?, city_id = ? WHERE id = ?";
+            """
+                    UPDATE post SET fname = ?,
+                    description = ?,
+                    created = ?,
+                    visible = ?,
+                    city_id = ?
+                    WHERE id = ?
+                    """;
     private static final String FIND_BY_ID = "SELECT * FROM post WHERE id = ?";
     private static final Logger LOG = LogManager.getLogger(PostDBStore.class);
 
